@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('welcome')->with('name', 'gavin')->with('say', '嗨！');
+    return view('welcome');
 });
 
 Auth::routes();
