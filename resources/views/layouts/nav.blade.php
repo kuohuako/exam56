@@ -26,9 +26,13 @@
                 </li>
                 @else
                 @section('my_menu')
-                @role('管理員')
-                <li><a class="nav-link" href="/admin">{{ __('Admin') }}</a></li>
-                @endrole
+                    @can('後台管理')
+                        <li><a class="nav-link" href="/admin">{{ __('Admin') }}</a></li>
+                    @endcan
+
+                    @can('建立測驗')
+                        <li><a class="nav-link" href="{{ route('exam.create')}}">建立測驗</a></li>
+                    @endcan
                 @show
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
