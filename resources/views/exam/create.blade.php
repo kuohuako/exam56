@@ -22,6 +22,8 @@
                     ->inline())
                 ->showAsRow() }}
 
+            {{ bs()->hidden('user_id', Auth::id()) }}
+
             {{ bs()->formGroup()
                 ->label('', false, 'text-sm-right')
                 ->control(bs()->submit('儲存'))
