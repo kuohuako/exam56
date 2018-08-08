@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 
 @section('content')
-    <h1>建立測驗</h1>
+    <h1>{{__('Create Exam')}}</h1>
 
     @can('建立測驗')
         {{ bs()->openForm('post', '/exam') }}

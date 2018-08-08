@@ -15,7 +15,9 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::all();
+        $exams = Exam::where('enable', 1)
+            ->orderBy('created_at', 'desc')
+            ->paginate(2);
         return view('exam.index', compact('exams'));
     }
 
