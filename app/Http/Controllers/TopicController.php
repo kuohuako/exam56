@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exam;
-use App\Http\Requests\ExamRequest;
+use App\Http\Requests\TopicRequest;
+use App\Topic;
 use Illuminate\Http\Request;
 
-class ExamController extends Controller
+class TopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::where('enable', 1)
-            ->orderBy('created_at', 'desc')
-            ->paginate(2);
-        return view('exam.index', compact('exams'));
+        //
     }
 
     /**
@@ -28,7 +25,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return view('exam.create');
+        //
     }
 
     /**
@@ -37,10 +34,10 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExamRequest $request)
+    public function store(TopicRequest $request)
     {
-        Exam::create($request->all());
-        return redirect()->route('exam.index');
+        $topic = Topic::create($request->all());
+        return redirect()->route('exam.show', $topic->exam_id);
     }
 
     /**
@@ -49,9 +46,9 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Exam $exam)
+    public function show($id)
     {
-        return view('exam.show', compact('exam'));
+        //
     }
 
     /**
@@ -72,7 +69,7 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ExamRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }
