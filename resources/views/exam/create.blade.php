@@ -4,7 +4,12 @@
     <h1>{{__('Create Exam')}}</h1>
 
     @can('建立測驗')
+
+    @if(isset($exam))
+        {{ bs()->openForm('patch', "/exam/{$exam->id}", ['model' => $exam]) }}
+    @else
         {{ bs()->openForm('post', '/exam') }}
+    @endif
 
             {{ bs()->formGroup()
                 ->label('測驗標題', false, 'text-sm-right')
@@ -18,8 +23,7 @@
             {{ bs()->formGroup()
                 ->label('是否啟用', false, 'text-sm-right')
                 ->control(bs()->radioGroup('enable', [1 => '啟用', 0 => '關閉'])
-                    ->selectedOption(1)
-                    ->inline())
+                ->inline())
                 ->showAsRow() }}
 
             {{ bs()->hidden('user_id', Auth::id()) }}

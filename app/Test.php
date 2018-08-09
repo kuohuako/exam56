@@ -4,19 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class Test extends Model
 {
     protected $fillable = [
-        'title', 'user_id', 'enable',
+        'content', 'user_id', 'exam_id', 'score',
     ];
 
-    protected $casts = [
-        'enable' => 'boolean',
-    ];
-
-    public function topics()
+    public function exam()
     {
-        return $this->hasMany('App\Topic');
+        return $this->belongsTo('App\Exam');
     }
 
     public function user()
