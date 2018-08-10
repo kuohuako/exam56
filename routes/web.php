@@ -12,6 +12,7 @@
  */
 Route::pattern('exam', '[0-9]+');
 Route::pattern('topic', '[0-9]+');
+Route::pattern('test', '[0-9]+');
 
 Route::get('/', 'ExamController@index')->name('index');
 
@@ -28,5 +29,13 @@ Route::get('/topic/{topic}/edit', 'TopicController@edit')->name('topic.edit');
 Route::patch('/topic/{topic}', 'TopicController@update')->name('topic.update');
 Route::delete('/topic/{topic}', 'TopicController@destroy')->name('topic.destroy');
 Route::delete('/exam/{exam}', 'ExamController@destroy')->name('exam.destroy');
-
 Route::post('/topic', 'TopicController@store')->name('topic.store');
+
+Route::post('/test', 'TestController@store')->name('test.store');
+Route::get('/test/{test}', 'TestController@show')->name('test.show');
+
+// 處理表單，導向至 NTPC OpenID 登入
+Route::post('auth/login/openid', 'OpenIDController@ntpcopenid')->name('ntpcopenid');
+
+// OpenID 導回
+Route::get('auth/login/openid', 'OpenIDController@get_ntpcopenid')->name('get_ntpcopenid');

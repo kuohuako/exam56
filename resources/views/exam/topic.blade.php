@@ -10,6 +10,7 @@
                 {{$topic->topic}}                
             </dt>
             <dd class="opt">
+                    {{ bs()->hidden("ans[$topic->id]", 0) }}
                     {{ bs()->radioGroup("ans[$topic->id]", [
                         1=> "&#10102; $topic->opt1",
                         2=> "&#10103; $topic->opt2",
