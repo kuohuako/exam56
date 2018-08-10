@@ -5,11 +5,11 @@
 
     @can('建立測驗')
 
-    @if(isset($exam))
-        {{ bs()->openForm('patch', "/exam/{$exam->id}", ['model' => $exam]) }}
-    @else
-        {{ bs()->openForm('post', '/exam') }}
-    @endif
+        @if(isset($exam))
+            {{ bs()->openForm('patch', "/exam/{$exam->id}", ['model' => $exam]) }}
+        @else
+            {{ bs()->openForm('post', '/exam') }}
+        @endif
 
             {{ bs()->formGroup()
                 ->label('測驗標題', false, 'text-sm-right')

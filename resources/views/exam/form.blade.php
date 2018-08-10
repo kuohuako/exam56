@@ -1,8 +1,8 @@
 @if(isset($topic))
         {{ bs()->openForm('patch', "/topic/{$topic->id}", ['model' => $topic]) }}
-    @else
+@else
         {{ bs()->openForm('post', '/topic') }}
-    @endif
+@endif
         {{ bs()->formGroup()
                 ->label('題目內容', false, 'text-sm-right')
                 ->control(bs()->textarea('topic')->placeholder('請輸入題目內容'))
