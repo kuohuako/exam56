@@ -54,6 +54,7 @@ class TestController extends Controller
         $score = round(100 * ($right_ans / $show_num), 0);
 
         $stu_info = session('pref/language');
+        $stu_info = is_null($stu_info) ? '000000' : $stu_info;
 
         $test = Test::create([
             'content' => $content,

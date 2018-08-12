@@ -19,20 +19,25 @@ Route::get('/', 'ExamController@index')->name('index');
 Auth::routes();
 
 Route::get('/home', 'ExamController@index')->name('home');
-Route::get('/exam/{exam}', 'ExamController@show')->name('exam.show');
-Route::get('/exam/create', 'ExamController@create')->name('exam.create');
-Route::get('/exam', 'ExamController@index')->name('exam.index');
-Route::post('/exam', 'ExamController@store')->name('exam.store');
-Route::get('/exam/{exam}/edit', 'ExamController@edit')->name('exam.edit');
-Route::patch('/exam/{exam}', 'ExamController@update')->name('exam.update');
-Route::get('/topic/{topic}/edit', 'TopicController@edit')->name('topic.edit');
-Route::patch('/topic/{topic}', 'TopicController@update')->name('topic.update');
-Route::delete('/topic/{topic}', 'TopicController@destroy')->name('topic.destroy');
-Route::delete('/exam/{exam}', 'ExamController@destroy')->name('exam.destroy');
-Route::post('/topic', 'TopicController@store')->name('topic.store');
 
-Route::post('/test', 'TestController@store')->name('test.store');
-Route::get('/test/{test}', 'TestController@show')->name('test.show');
+Route::resource('exam', 'ExamController');
+// Route::get('/exam', 'ExamController@index')->name('exam.index');
+// Route::get('/exam/{exam}', 'ExamController@show')->name('exam.show');
+// Route::get('/exam/create', 'ExamController@create')->name('exam.create');
+// Route::get('/exam/{exam}/edit', 'ExamController@edit')->name('exam.edit');
+// Route::post('/exam', 'ExamController@store')->name('exam.store');
+// Route::patch('/exam/{exam}', 'ExamController@update')->name('exam.update');
+// Route::delete('/exam/{exam}', 'ExamController@destroy')->name('exam.destroy');
+
+Route::resource('topic', 'TopicController');
+// Route::get('/topic/{topic}/edit', 'TopicController@edit')->name('topic.edit');
+// Route::post('/topic', 'TopicController@store')->name('topic.store');
+// Route::patch('/topic/{topic}', 'TopicController@update')->name('topic.update');
+// Route::delete('/topic/{topic}', 'TopicController@destroy')->name('topic.destroy');
+
+Route::resource('test', 'TestController');
+// Route::get('/test/{test}', 'TestController@show')->name('test.show');
+// Route::post('/test', 'TestController@store')->name('test.store');
 
 // 處理表單，導向至 NTPC OpenID 登入
 Route::post('auth/login/openid', 'OpenIDController@ntpcopenid')->name('ntpcopenid');
